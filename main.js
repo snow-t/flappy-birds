@@ -1,24 +1,25 @@
-var game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
+/*var game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
 
-var mainState = {
+game.State = function(){ };
+game.State.prototype = {
 	preload:function(){
-		game.stage.backgroundColor = '#71C5CF';
-		game.load.image('bird','assets/bird.png');
+		this.game.stage.backgroundColor = '#71C5CF';
+		this.game.load.image('bird','assets/bird.png');
 
 
-		game.load.image('pipe','assets/pipe.png');
+		this.game.load.image('pipe','assets/pipe.png');
 	},
 
 	create: function(){
-		game.physics.startSystem(Phaser.Physics.ARCADE);
+		//game.physics.startSystem(Phaser.Physics.ARCADE);
 		this.bird = this.game.add.sprite(100,245,'bird');
-		game.physics.arcade.enable(this.bird);
+		//game.physics.arcade.enable(this.bird);
 		this.bird.body.gravity.y = 1000;
 		var spaceKey = this.game.input.keyboard.addKey(phaser.Keyboard.SPACEBAR);
 		spaceKey.onDOwn.add(this.jump,this);
 
 		this.pipes = game.add.group();
-		this.pipes.enableBody = true;
+		//this.pipes.enableBody = true;
 		this.pipes.createMultipe(20,'pipe');
 		this.timer = game.time.events.loop(1500,this.addRowOfPipes, this);
 	},
@@ -37,9 +38,9 @@ var mainState = {
 		game.state.start('main');
 	},
 
-	addOnePipe: function(){
-		var pipr = this.pipes.getFirstDead();
-		pipr.reset(x,y);
+	addOnePipe: function(x,y){
+		var pipe = this.pipes.getFirstDead();
+		pipe.reset(x,y);
 		pipe.body.velocity.x = -200;
 		pipe.checkWorldBounds = true;
 		pipe.outOfBoundsKill = true;
@@ -54,4 +55,4 @@ var mainState = {
 }
 
 game.state.add('main', mainState);  
-game.state.start('main'); 
+game.state.start('main'); */
