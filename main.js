@@ -1,7 +1,7 @@
 //建立游戏
 var game = new Phaser.Game(320,505,Phaser.AUTO,'game');
 
-//创建状态？
+//创建状态
 game.States = {};
 
 //启动状态
