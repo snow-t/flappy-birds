@@ -254,7 +254,7 @@ game.States.play = function(){
 		//这个setAll应该是改变内置参数?
 		this.pipeGroup.setAll('checkWorldBounds',true); 
 		this.pipeGroup.setAll('outOfBoundsKill',true);
-		this.pipeGroup.setAll('body.velocity.x', -this.gameSpeed); 
+		this.pipeGroup.setAll('body.velocity.x', -this.gameSpeed);
 	}
 
 	this.resetPipe = function(topPipeY,bottomPipeY){
@@ -283,6 +283,7 @@ game.States.play = function(){
 		if (!this.hasStarted) return;
 		game.physics.arcade.collide(this.bird,this.ground,this.hitGround,null,this);
 		game.physics.arcade.overlap(this.bird,this.pipeGroup,this.hitPipe,null,this);
+		if (this.bird.y < 0) this.hitPipe();
 		if (this.bird.angle <90) this.bird.angle += 2.5;
 		this.pipeGroup.forEachExists(this.checkScore,this);
 	}
