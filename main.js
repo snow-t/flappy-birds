@@ -49,6 +49,7 @@ game.States.preload = function(){
 		game.load.image('play_tip','assets/instructions.png'); //玩法提示图片
 		game.load.image('game_over','assets/gameover.png'); //gameover图片
 		game.load.image('score_board','assets/scoreboard.png'); //得分板
+		game.load.spritesheet('medals','assets/medals.png',44,46,2);
 	}
 
 	this.create = function(){
@@ -82,7 +83,7 @@ game.States.menu = function(){
 		titleGroup.y = 100;
 		//to(properties, duration, ease, autoStart, delay, repeat, yoyo)
 		//tween(对象)用于形成补间动画
-		//在这里就是让他上下移动 properties 是动画效果 这里大概是将y移到120px位置
+		//在这里就是让他上下移动 properties 是动画效果 这里是将y移到120px位置
 		//ease表示缓动函数 不会设置= =
 		//yoyo为true表示自动反转 就是上下移动 如果false 就只向下移动
 		game.add.tween(titleGroup).to({y : 120},1000,null,true,0,Number.MAX_VALUE,true);
@@ -124,9 +125,6 @@ game.States.play = function(){
 		this.soundScore = game.add.sound('score_sound');
 		this.soundHitPipe = game.add.sound('hit_pipe_sound');
 		this.soundHitGround = game.add.sound('hit_ground_sound');
-		//设置当前得分版
-		//bitmapText: function (x, y, font, text, size)
-		this.scoreText = game.add.bitmapText(game.world.centerX-20, 30, 'flappy_font', '0', 36);
 
 		//添加 get ready文字和提示以及设置他们的锚点
 		this.readyText = game.add.image(game.width/2, 40, 'ready_text');
@@ -167,6 +165,9 @@ game.States.play = function(){
 		game.input.onDown.add(this.fly,this);
 		//启动制造管道的时钟事件
 		game.time.events.start();
+		//设置当前得分版
+		//bitmapText: function (x, y, font, text, size)
+		this.scoreText = game.add.bitmapText(game.world.centerX-20, 30, 'flappy_font', '0', 36);
 	}
 
 	this.stopGame = function(){
@@ -227,8 +228,7 @@ game.States.play = function(){
 		//button: function (x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame, group) 
 		var replayBtn = game.add.button(game.width/2, 210, 'btn', function(){
 			game.state.start('play');
-		}, this, null, null, null, null, this.gameOverGroup);
-
+		}, this, null, null, null, null, this.gameOverGroup); 
 		//设置各元素锚点
 		gameOverText.anchor.setTo(0.5, 0);
 		scoreboard.anchor.setTo(0.5, 0);
@@ -237,8 +237,7 @@ game.States.play = function(){
 	}
 
 	this.generatePipes = function(gap){
-		//gap是空隙 但是我看不懂为什么要这样设置 = =
-		gap = gap || 100;
+		gap = 100;
 		//设置管道随机位置(position位置为上方管道左下角)
 		var position = (505 - 320 - gap) + Math.floor((505 - 112 - 30 - gap - 505 + 320 + gap) * Math.random());
 		//上下方管道位置
