@@ -1,6 +1,6 @@
-# bbtpd
+# Community
 
-> 百步�
+> 社团管理系统
 
 ## Build Setup
 
@@ -18,4 +18,35 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader
+
+---
+# 开发日志
+
+17-4-5
+
+v0.0:寒假做的一版，当时的需求跟目前需求不一样，需要较大改动。
+
+
+---
+#目录结构
+
+
+```
+
+├─build
+├─config
+├─src
+│  ├─assets
+│  ├─components
+│  │  ├─admin
+│  │  └─user
+│  │      ├─acts
+│  │      ├─component
+│  │      ├─index
+│  │      └─me
+│  └─router
+└─static
+    └─js
+    
+```
